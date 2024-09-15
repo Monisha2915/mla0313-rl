@@ -1,0 +1,17 @@
+import tensorflow as tf
+import numpy as np
+class Env:
+    def __init__(self):
+        self.state = 0
+    def step(self, action):
+        if action == 1:
+            self.state += 1
+            return self.state, 1
+        else:
+            self.state -= 1
+            return self.state, -1
+env = Env()
+for i in range(10):
+    action = np.random.choice([0, 1])
+    state, reward = env.step(action)
+    print(f"Action: {action}, State: {state}, Reward: {reward}")
