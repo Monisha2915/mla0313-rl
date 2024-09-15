@@ -1,0 +1,15 @@
+import numpy as np
+states = ['win', 'lose', 'draw']
+Q = {'win': 0, 'lose': 0, 'draw': 0}
+alpha = 0.1
+gamma = 0.9
+epsilon = 0.1
+for _ in range(100):
+    state = np.random.choice(states)
+    action = np.random.choice(['X', 'O'])
+    next_state = np.random.choice(states)
+    reward = 1 if state == 'win' else -1 if state == 'lose' else 0
+    next_action = np.random.choice(['X', 'O'])
+    Q[state] += alpha * (reward + gamma * Q[next_state] - Q[state])
+    state = next_state
+print(Q)
