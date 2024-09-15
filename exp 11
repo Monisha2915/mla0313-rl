@@ -1,0 +1,15 @@
+import numpy as np
+states = ['S1', 'S2', 'S3']
+actions = ['A1', 'A2']
+V = {'S1': 0, 'S2': 0, 'S3': 0}
+rewards = {'S1': 1, 'S2': 0, 'S3': -1}
+gamma = 0.9
+for _ in range(10):
+    for state in states:
+        action_values = []
+        for action in actions:
+            next_state = np.random.choice(states)
+            action_value = rewards[state] + gamma * V[next_state]
+            action_values.append(action_value)
+        V[state] = max(action_values)
+print(V)
