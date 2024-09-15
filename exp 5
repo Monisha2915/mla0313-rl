@@ -1,0 +1,8 @@
+import numpy as np
+grid = np.zeros((6, 4))
+rewards = np.random.rand(6, 4)
+gamma = 0.9
+for i in range(6):
+    for j in range(4):
+        grid[i, j] = rewards[i, j] + gamma * np.max(grid[max(0, i-1):min(6, i+2), max(0, j-1):min(4, j+2)])
+print("Exploitation Values:\n", grid)
