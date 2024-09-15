@@ -1,0 +1,14 @@
+import numpy as np
+actions = [0, 1]
+rewards = []
+for i in range(100):
+    episode_rewards = []
+    state = 0
+    for j in range(10):
+        action = np.random.choice(actions)
+        reward = 1 if action == 1 else -1
+        state += reward
+        episode_rewards.append(reward)
+    rewards.append(sum(episode_rewards))
+avg_reward = sum(rewards) / len(rewards)
+print("Average Reward after 100 episodes:", avg_reward)
