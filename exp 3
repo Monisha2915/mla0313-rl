@@ -1,0 +1,13 @@
+import numpy as np
+grid = np.zeros((3, 3))
+rewards = np.zeros((3, 3))
+rewards[2, 2] = 1
+gamma, actions = 0.9, [(-1, 0), (1, 0), (0, -1), (0, 1)]
+def bellman_update(grid, rewards, gamma):
+    for i in range(3):
+        for j in range(3):
+            grid[i, j] = max(rewards[i, j] + gamma * grid[max(0, min(i+di, 2)), max(0, min(j+dj, 2))] for di, dj in actions)
+    return grid
+for _ in range(100):
+    grid = bellman_update(grid, rewards, gamma)
+print("Value Grid:\n", grid)
