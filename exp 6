@@ -1,0 +1,11 @@
+import numpy as np
+import matplotlib.pyplot as plt
+exploitation = np.random.rand(4, 4)
+exploration = np.random.rand(4, 4) + exploitation
+plt.subplot(1, 2, 1)
+plt.imshow(exploitation, cmap='hot', interpolation='nearest')
+plt.title("Exploitation")
+plt.subplot(1, 2, 2)
+plt.imshow(exploration, cmap='hot', interpolation='nearest')
+plt.title("Exploration")
+plt.show()
