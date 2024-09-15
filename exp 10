@@ -1,0 +1,13 @@
+import numpy as np
+states = ['Politics', 'Sports', 'Tech']
+V = {'Politics': 0, 'Sports': 0, 'Tech': 0}
+gamma = 0.9
+alpha = 0.1
+for _ in range(100):
+    current_state = np.random.choice(states)
+    for _ in range(10):
+        reward = np.random.choice([1, -1])
+        next_state = np.random.choice(states)
+        V[current_state] += alpha * (reward + gamma * V[next_state] - V[current_state])
+        current_state = next_state
+print(V)
